@@ -11,7 +11,7 @@ import com.devsuperior.uri2602.entities.Customer;
 import com.devsuperior.uri2602.projections.CustomerMinProjection;
 
 @Repository
-public interface CustomersRepository extends JpaRepository<Customer, Long> {
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
 	//SQL RAIZ
 	@Query(nativeQuery = true, value = "SELECT name FROM customers WHERE state = :state")
@@ -26,6 +26,6 @@ public interface CustomersRepository extends JpaRepository<Customer, Long> {
 	*/
 	@Query("SELECT new com.devsuperior.uri2602.dto.CustomerMinDTO(obj.name) "
 			+ "FROM Customer obj "
-			+ "WHERE obj.state = :state ")
+			+ "WHERE UPPER(obj.state) = UPPER(:state) ")
 	List<CustomerMinDTO> CustomersByStateJpql(String state);
 }

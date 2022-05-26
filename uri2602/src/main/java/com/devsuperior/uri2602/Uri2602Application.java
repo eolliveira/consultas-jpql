@@ -10,13 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.devsuperior.uri2602.dto.CustomerMinDTO;
 import com.devsuperior.uri2602.projections.CustomerMinProjection;
-import com.devsuperior.uri2602.repositories.CustomersRepository;
+import com.devsuperior.uri2602.repositories.CustomerRepository;
 
 @SpringBootApplication
 public class Uri2602Application implements CommandLineRunner {
 
 	@Autowired
-	private CustomersRepository repository;
+	private CustomerRepository repository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Uri2602Application.class, args);
@@ -37,12 +37,11 @@ public class Uri2602Application implements CommandLineRunner {
 		
 		System.out.println(" \nConsulta JPQL: \n");
 		
-		List<CustomerMinDTO> list2 = repository.CustomersByStateJpql("RS");
+		List<CustomerMinDTO> list2 = repository.CustomersByStateJpql("rs");
 		
 		for(CustomerMinDTO c : list2) {
 			System.out.println(c);
 		}
 		
-	
 	}
 }
