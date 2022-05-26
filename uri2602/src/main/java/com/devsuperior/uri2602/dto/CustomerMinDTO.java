@@ -9,7 +9,6 @@ public class CustomerMinDTO {
 	public CustomerMinDTO() {}
 
 	public CustomerMinDTO(String name) {
-		super();
 		this.name = name;
 	}
 	
