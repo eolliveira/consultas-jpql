@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.devsuperior.uri2611.dto.MovieFullDTO;
 import com.devsuperior.uri2611.entities.Movie;
 import com.devsuperior.uri2611.projections.MovieFullProjection;
 
@@ -20,6 +21,11 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 			+ "JOIN genres g ON m.id_genres = g.id "
 			+ "WHERE UPPER(g.description) = UPPER(:genre)")
 	List<MovieFullProjection> filmsByGenre(String genre);
+	
+	@Query("SELECT new com.devsuperior.uri2611.dto.MovieFullDTO(m.id, m.name) "
+			+ "FROM Movie m "
+			+ "WHERE m.genre.description = :genre")
+	List<MovieFullDTO> filmsByGenreJpql(String genre);
 	
 	
 }
