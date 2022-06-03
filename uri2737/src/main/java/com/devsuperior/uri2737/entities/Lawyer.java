@@ -16,6 +16,12 @@ public class Lawyer {
 	public Lawyer() {
 	}
 
+	public Lawyer(Long register, String name, Integer customersNumber) {
+		this.register = register;
+		this.name = name;
+		this.customersNumber = customersNumber;
+	}
+
 	public Long getRegister() {
 		return register;
 	}
